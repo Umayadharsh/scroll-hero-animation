@@ -23,12 +23,12 @@ export default function App() {
     gsap.registerPlugin(ScrollTrigger);
   }, []);
 
-  // 🔥 LOAD ANIMATION
+ 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ ease: "power3.out" });
 
-      // HEADLINE STAGGER
+      
       tl.fromTo(
         charsRef.current,
         { opacity: 0, y: 40 },
@@ -40,7 +40,7 @@ export default function App() {
         }
       );
 
-      // STATS
+      
       tl.fromTo(
         statsRef.current,
         { opacity: 0, x: 40 },
@@ -48,7 +48,7 @@ export default function App() {
         "-=0.4"
       );
 
-      // CAR
+      
       tl.fromTo(
         carRef.current,
         { opacity: 0, y: 50, scale: 0.95 },
@@ -56,7 +56,6 @@ export default function App() {
         "-=0.5"
       );
 
-      // SCROLL TEXT
       tl.fromTo(scrollRef.current, { opacity: 0 }, { opacity: 1 });
 
     }, heroRef);
@@ -64,11 +63,11 @@ export default function App() {
     return () => ctx.revert();
   }, []);
 
-  // 🔥 SCROLL ANIMATION
+  
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // CAR
+     
       gsap.to(carRef.current, {
         x: "30%",
         rotation: 8,
@@ -82,7 +81,7 @@ export default function App() {
         },
       });
 
-      // GLOW
+     
       gsap.to(glowRef.current, {
         x: "20%",
         opacity: 0,
@@ -96,7 +95,6 @@ export default function App() {
         },
       });
 
-      // HEADLINE SCROLL OUT
      gsap.to(charsRef.current, {
     
   opacity: 0,
@@ -106,15 +104,15 @@ export default function App() {
     each: 0.03,
     from: "center"
   },
-  ease: "power2.out",   // 🔥 smoother
+  ease: "power2.out",   
   scrollTrigger: {
     trigger: heroRef.current,
-    start: "35% top",   // earlier start
-    end: "95% top",     // longer fade
-    scrub: 1.5,         // smoother interpolation
+    start: "35% top",   
+    end: "95% top",     
+    scrub: 1.5,         
   },
 });
-      // STATS OUT
+      
       gsap.to(statsRef.current, {
         opacity: 0,
         x: 60,
@@ -127,7 +125,7 @@ export default function App() {
         },
       });
 
-      // SCROLL INDICATOR
+      
       gsap.to(scrollRef.current, {
         opacity: 0,
         y: 20,
@@ -150,7 +148,7 @@ export default function App() {
         <div className="grid-overlay" />
         <div className="glow-ring" ref={glowRef} />
 
-        {/* 🔥 LETTER-SPACED HEADLINE */}
+       
         <div className="headline-container">
           <h1 className="headline-text">
             {"WELCOME ITZFIZZ".split("").map((char, i) => (
@@ -165,12 +163,12 @@ export default function App() {
           </h1>
         </div>
 
-        {/* 🚗 CAR */}
+        
         <div className="car-wrapper" ref={carRef}>
           <img src={CAR_IMAGE} alt="car" draggable={false} />
         </div>
 
-        {/* 📊 STATS */}
+       
         <div className="stats-container">
           {STATS.map((s, i) => (
             <div
@@ -184,7 +182,7 @@ export default function App() {
           ))}
         </div>
 
-        {/* ⬇ SCROLL */}
+       
         <div className="scroll-indicator" ref={scrollRef}>
           <span className="scroll-text">Scroll</span>
           <div className="scroll-line" />
